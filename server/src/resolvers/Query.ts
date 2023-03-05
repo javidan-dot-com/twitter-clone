@@ -1,6 +1,7 @@
+import { TwitterResolverContext } from "../resolvers"
 import { QueryResolvers } from "../resolvers-types.generated"
 
-const queryTwitterResolvers: QueryResolvers = {
+const queryTwitterResolvers: QueryResolvers<TwitterResolverContext> = {
     currentUser: () => {
         return {
             id: "123",
@@ -12,7 +13,7 @@ const queryTwitterResolvers: QueryResolvers = {
             updatedAt: "",
         }
     },
-    suggestions: () => {
+    suggestions: (_, __, { db: _db }) => {
         return [
             {
                 name: "TypeScript Project",
